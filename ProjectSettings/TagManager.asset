@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Foremost
+    uniqueID: 1448370803
+    locked: 0
   - name: BackGround
     uniqueID: 1850895539
     locked: 0

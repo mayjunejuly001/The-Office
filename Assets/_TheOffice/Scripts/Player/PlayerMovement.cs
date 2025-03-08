@@ -53,6 +53,8 @@ public class PLayerMovement : MonoBehaviour
     {
         JumpChecks();
         CountTimers();
+        CheckGravity();
+        
     }
 
     private void FixedUpdate()
@@ -68,6 +70,15 @@ public class PLayerMovement : MonoBehaviour
         {
             Move(MoveStats.AirAcceleration, MoveStats.AirDeceleration, InputManager.Movement);
         }
+    }
+
+    private void CheckGravity()
+    {
+        if (MoveStats.GravityIsOn)
+        {
+            transform.position = new Vector3(0f ,0f, 0f);
+        }
+        
     }
 
     private void OnDrawGizmos()

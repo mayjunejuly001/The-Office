@@ -48,6 +48,9 @@ public class PlayerMovementStats : ScriptableObject
     public bool DebugShowIsGroundedBox;
     public bool DebugShowHeadBumpBox;
 
+    [Header("Gravity")]
+    public bool GravityIsOn;
+
     [Header("Jump Visualization Tool")]
     public bool ShowWalkJumpArc = false;
     public bool ShowRunJumpArc = false;
