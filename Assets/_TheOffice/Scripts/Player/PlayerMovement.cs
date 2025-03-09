@@ -51,7 +51,7 @@ public class PLayerMovement : MonoBehaviour
         } private set
         {
             _isMoving = value;
-            animator.SetBool("isMoving", _isMoving);
+            animator.SetBool(AnimationStrings.isMoving, _isMoving);
         } }
 
     [SerializeField]
@@ -65,7 +65,7 @@ public class PLayerMovement : MonoBehaviour
         private set
         {
             _isRunning = value;
-            animator.SetBool("isRunning", _isRunning);
+            animator.SetBool(AnimationStrings.isRunning, _isRunning);
         }
     }
 
