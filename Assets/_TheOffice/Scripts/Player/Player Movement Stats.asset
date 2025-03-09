@@ -17,7 +17,7 @@ MonoBehaviour:
   GroundDeceleration: 20
   AirAcceleration: 5
   AirDeceleration: 25.8
-  MaxRunSpeed: 11.255593
+  MaxRunSpeed: 23.5
   GroundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -29,7 +29,7 @@ MonoBehaviour:
   TimeTillJumpApex: 0.35
   GravityOnReleaseMultiplier: 2
   MaxFallSpeed: 26
-  NumberOfJumpsAllowed: 2
+  NumberOfJumpsAllowed: 1
   TimeForUpwardsCancel: 0.0151
   ApexThreshold: 0.8261999
   ApexHangTime: 0.067915

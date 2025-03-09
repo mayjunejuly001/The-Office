@@ -43,10 +43,42 @@ public class PLayerMovement : MonoBehaviour
     // Coyote Time Variables
     private float _coyoteTimer;
 
+    [SerializeField]
+    private bool _isMoving = false; 
+    public bool IsMoving { get
+        {
+            return _isMoving;
+        } private set
+        {
+            _isMoving = value;
+            animator.SetBool("isMoving", _isMoving);
+        } }
+
+    [SerializeField]
+    private bool _isRunning = false;
+    public bool IsRunning
+    {
+        get
+        {
+            return _isRunning;
+        }
+        private set
+        {
+            _isRunning = value;
+            animator.SetBool("isRunning", _isRunning);
+        }
+    }
+
+
+
+    Animator animator;
+    
+
     private void Awake()
     {
         _isFacingRight = true;
         _rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -103,18 +135,25 @@ public class PLayerMovement : MonoBehaviour
 
             TurnCheck(moveInput);
 
-
+            
             //checking if he has to turn 
 
             Vector2 targetVelocity = Vector2.zero;
+            
 
             if (InputManager.RunIsHeld)
             {
                 targetVelocity = new Vector2(moveInput.x, 0f) * MoveStats.MaxRunSpeed;
+                IsRunning = true;
+                IsMoving = false;
+               
             }
             else
             {
                 targetVelocity = new Vector2(moveInput.x, 0f) * MoveStats.MaxWalkSpeed;
+                IsMoving = true;
+                IsRunning = false;
+                
             }
 
             _moveVelocity = Vector2.Lerp(_moveVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
@@ -125,7 +164,11 @@ public class PLayerMovement : MonoBehaviour
         {
             _moveVelocity = Vector2.Lerp(_moveVelocity, Vector2.zero, deceleration * Time.deltaTime);
             _rb.linearVelocity = new Vector2(_moveVelocity.x, _rb.linearVelocity.y);
+            IsMoving = false;
+            IsRunning = false;
+
         }
+       
     }
 
     private void TurnCheck(Vector2 moveInput)
