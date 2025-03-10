@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PLayerMovement : MonoBehaviour
 {
@@ -19,7 +20,11 @@ public class PLayerMovement : MonoBehaviour
 
     private RaycastHit2D _groundHit;
     private RaycastHit2D _headHit;
+
+
+    [SerializeField]
     private bool _isGrounded;
+
     private bool _bumpedHead;
 
     // Jump Vars
@@ -70,6 +75,19 @@ public class PLayerMovement : MonoBehaviour
     }
 
 
+    public bool IsGrounded
+    {
+        get
+        {
+            return _isGrounded;
+        }
+        private set
+        {
+            _isGrounded = value;
+            animator.SetBool(AnimationStrings.isGrounded, _isGrounded);
+        }
+    }
+
 
     Animator animator;
     
@@ -102,6 +120,8 @@ public class PLayerMovement : MonoBehaviour
         {
             Move(MoveStats.AirAcceleration, MoveStats.AirDeceleration, InputManager.Movement);
         }
+
+        
     }
 
     private void CheckGravity()
@@ -207,6 +227,8 @@ public class PLayerMovement : MonoBehaviour
         {
             _jumpBufferTimer = MoveStats.JumpBufferTime;
             _jumpReleasedDuringBuffer = false;
+            
+
         }
 
         if (InputManager.JumpIsReleased)
@@ -239,6 +261,7 @@ public class PLayerMovement : MonoBehaviour
             {
                 _isFastFalling = true;
                 _fastFallReleaseSpeed = VerticalVelocity;
+               
             }
 
         }
@@ -408,7 +431,7 @@ public class PLayerMovement : MonoBehaviour
     #endregion
 
     #region Collison Checks
-    private void IsGrounded()
+    private void UpdateIsGrounded()
     {
         float bufferDistance = 0.05f;
         Vector2 boxCastOrigin = new Vector2(_feetColl.bounds.center.x, _feetColl.bounds.min.y - bufferDistance);
@@ -416,7 +439,9 @@ public class PLayerMovement : MonoBehaviour
 
         _groundHit = Physics2D.BoxCast(boxCastOrigin, boxCastSize, 0f, Vector2.down, MoveStats.GroundDetectionRayLength, MoveStats.GroundLayer);
 
-        _isGrounded = _groundHit.collider != null;
+        IsGrounded = _groundHit.collider != null;
+
+        
 
 
 
@@ -492,7 +517,7 @@ public class PLayerMovement : MonoBehaviour
 
     private void CollisionChecks()
     {
-        IsGrounded();
+        UpdateIsGrounded();
         BumpedHead();
     }
 
