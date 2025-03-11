@@ -11,10 +11,12 @@ public class InputManager : MonoBehaviour
     public static bool JumpIsHeld;
     public static bool JumpIsReleased;
     public static bool RunIsHeld;
+    public static bool Attack;
 
     private InputAction _moveAction;
     private InputAction _jumpAction;
     private InputAction _runAction;
+    private InputAction _attackAction;
 
 
 
@@ -24,6 +26,7 @@ public class InputManager : MonoBehaviour
         _moveAction = PlayerInput.actions["Move"];
         _jumpAction = PlayerInput.actions["Jump"];
         _runAction = PlayerInput.actions["Run"];
+        _attackAction = PlayerInput.actions["Attack"];
 
     }
 
@@ -31,6 +34,8 @@ public class InputManager : MonoBehaviour
     void Update()
     {
         Movement = _moveAction.ReadValue<Vector2>();
+
+        Attack = _attackAction.WasPressedThisFrame();
 
         JumpWasPressed = _jumpAction.WasPressedThisFrame();
         JumpIsHeld = _jumpAction.IsPressed();

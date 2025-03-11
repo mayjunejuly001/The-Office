@@ -1,8 +1,10 @@
 using Unity.VisualScripting;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static UnityEngine.Rendering.DebugUI;
 
-public class PLayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [Header("References")]
     public PlayerMovementStats MoveStats;
@@ -111,6 +113,7 @@ public class PLayerMovement : MonoBehaviour
     {
         CollisionChecks();
         Jump();
+        
 
         if (_isGrounded)
         {
@@ -228,6 +231,8 @@ public class PLayerMovement : MonoBehaviour
             _jumpBufferTimer = MoveStats.JumpBufferTime;
             _jumpReleasedDuringBuffer = false;
             
+            animator.SetTrigger(AnimationStrings.jumpTrigger);
+            
 
         }
 
@@ -302,6 +307,10 @@ public class PLayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        
+        
+       
+
         if (_isJumping)
         {
             if (_bumpedHead)
@@ -588,4 +597,7 @@ public class PLayerMovement : MonoBehaviour
         }
     }
     #endregion
+
+
+      
 }
