@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 30318229570687226}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 365225359585196994}
   - component: {fileID: 3448626781779565141}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 984592636467242628}
   - component: {fileID: 108185148656557534}
   - component: {fileID: 6253073187016520372}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,6 +244,7 @@ MonoBehaviour:
   MoveStats: {fileID: 11400000, guid: c464aff6f10aa1748ba0c3f9aa0d2295, type: 2}
   _feetColl: {fileID: 3448626781779565141}
   _bodyColl: {fileID: 7366796698603035221}
+  _isGrounded: 0
   _isMoving: 0
   _isRunning: 0
 --- !u!95 &6253073187016520372
@@ -278,7 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 253142223545718600}
   - component: {fileID: 7366796698603035221}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
