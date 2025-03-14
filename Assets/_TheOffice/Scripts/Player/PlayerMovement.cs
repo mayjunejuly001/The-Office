@@ -1,3 +1,4 @@
+using Unity.Hierarchy;
 using Unity.VisualScripting;
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
@@ -26,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private bool _isGrounded;
-
     private bool _bumpedHead;
 
     // Jump Vars
@@ -106,23 +106,56 @@ public class PlayerMovement : MonoBehaviour
         JumpChecks();
         CountTimers();
         CheckGravity();
-        
+        OnAttack();
+    }
+    public bool CanMove
+    {
+        get
+        {
+            return animator.GetBool(AnimationStrings.canMove);
+        }
     }
 
+
+    public bool IsAlive
+    {
+        get
+        {
+            return animator.GetBool(AnimationStrings.isAlive);
+        }
+    }
     private void FixedUpdate()
     {
         CollisionChecks();
-        Jump();
         
 
-        if (_isGrounded)
+        if (IsAlive)
         {
+             Jump();
+            if (_isGrounded )
+            {
             Move(MoveStats.GroundAcceleration, MoveStats.GroundDeceleration, InputManager.Movement);
+            }
+            else 
+            {
+            Move(MoveStats.AirAcceleration, MoveStats.AirDeceleration, InputManager.Movement);
+            }
+
         }
         else
         {
-            Move(MoveStats.AirAcceleration, MoveStats.AirDeceleration, InputManager.Movement);
+            IsMoving = false;
+            _rb.linearVelocity = new Vector2(0, 0);
         }
+
+       
+        
+
+           
+
+
+       
+        
 
         
     }
@@ -191,7 +224,6 @@ public class PlayerMovement : MonoBehaviour
             IsRunning = false;
 
         }
-       
     }
 
     private void TurnCheck(Vector2 moveInput)
@@ -598,6 +630,13 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
 
-
+    
+    public void OnAttack()
+    {
+        if (InputManager.Attack)
+        {
+            animator.SetTrigger(AnimationStrings.attackTrigger);
+        }
+    }
       
 }

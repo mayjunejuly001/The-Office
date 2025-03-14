@@ -11,4 +11,5 @@ internal class AnimationStrings
     internal static string isOnCeiling = "isOnCeiling";
     internal static string hasTarget = "hasTarget";
     internal static string isAlive = "isAlive";
+    internal static string canMove = "canMove";
 }

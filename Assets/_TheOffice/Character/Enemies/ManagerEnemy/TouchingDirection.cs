@@ -10,9 +10,9 @@ public class TouchingDirections : MonoBehaviour
     CapsuleCollider2D touchingCol;
     Animator animator;
 
-    RaycastHit2D[] groundHits = new RaycastHit2D[5];
-    RaycastHit2D[] wallHits = new RaycastHit2D[5];
-    RaycastHit2D[] ceilingHits = new RaycastHit2D[5];
+     RaycastHit2D[] groundHits = new RaycastHit2D[5];
+     RaycastHit2D[] wallHits = new RaycastHit2D[5];
+     RaycastHit2D[] ceilingHits = new RaycastHit2D[5];
 
     [SerializeField]
     private bool _isGrounded;

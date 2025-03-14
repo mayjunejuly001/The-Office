@@ -1,56 +1,83 @@
+using System;
 using UnityEngine;
 
 public class Damageable : MonoBehaviour
 {
     Animator animator;
-
+    private Damageable damageable;
     [SerializeField]
-    private float _maxHealth = 100f;
+    public int _maxHealth = 100;
 
-
-    public float MaxHealth
+    public int MaxHealth
     {
         get { return _maxHealth; }
-        set
-        {
-            _maxHealth = value;
-        }
+        set { _maxHealth = value; } 
     }
 
     [SerializeField]
-    private float _health = 100f;
+    public int _health = 100;
 
+    public bool _isAlive = true;
+    public bool IsAlive
+    {
+        get { return _isAlive; }
+        set
+        {
+            _isAlive = value;
+            
+            animator.SetBool(AnimationStrings.isAlive, value);
+            
+            Debug.Log("IsAlive set to " + value);
+        }
+    }
 
-    public float Health
+    public int Health
     {
         get { return _health; }
         set
         {
-            _health = value;
+            _health = value; // Clamping Health
             if (_health <= 0)
             {
                 IsAlive = false;
             }
         }
     }
+
     [SerializeField]
-    public bool _isAlive = true;
+    public bool isInvincible = false;
+    public float timeSinceHit = 0;
+    public float isInvincibilityTime = 0.25f;
 
-    public bool IsAlive
-    {
-        get { return _isAlive; }
-        set
-        {
-
-            _isAlive = value;
-            animator.SetBool(AnimationStrings.isAlive , value);
-        }
-    }
-
-    private void Awake()
+    public void Awake()
     {
         animator = GetComponent<Animator>();
+        damageable = GetComponent<Damageable>();
     }
 
+    public void Update()
+    {
+        if (isInvincible)
+        {
+            timeSinceHit += Time.deltaTime;
+            if (timeSinceHit >= isInvincibilityTime) // Changed to >=
+            {
+                isInvincible = false;
+                timeSinceHit = 0;
+            }
+        }
+       
+    }
 
+    public bool Hit(int damage)
+    {
+        if (IsAlive && !isInvincible)
+        {
+            Health -= damage;
+            isInvincible = true;
+            return true;
+        }
+        return false;
+        
+    }
 }

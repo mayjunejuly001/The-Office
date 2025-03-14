@@ -41,6 +41,8 @@ public class Knight : MonoBehaviour
     }
 
     public bool _hasTarget = false;
+    public float walkStopRate = 0.1f;
+
     public bool HasTarget { get
         {
             return _hasTarget;
@@ -49,6 +51,16 @@ public class Knight : MonoBehaviour
             _hasTarget = value;
             animator.SetBool(AnimationStrings.hasTarget, value);
         } }
+
+
+    public bool canMove
+    {
+        get
+        {
+            return animator.GetBool(AnimationStrings.canMove);
+        }
+        
+    }
 
     private void Awake()
     {
@@ -71,7 +83,17 @@ public class Knight : MonoBehaviour
             FlipDirection();
         }
 
-        rb.linearVelocity = new Vector2(walkSpeed * walkDirectionVector.x , rb.linearVelocityY);
+        if (canMove) 
+        {
+            rb.linearVelocity = new Vector2(walkSpeed * walkDirectionVector.x , rb.linearVelocityY);
+        }
+        else if(!canMove)
+        {
+            rb.linearVelocity = new Vector2(Mathf.Lerp(rb.linearVelocity.x , 0 , walkStopRate), rb.linearVelocity.y);
+            
+        }
+
+       
 
     }
 
