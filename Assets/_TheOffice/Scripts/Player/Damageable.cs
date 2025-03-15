@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Damageable : MonoBehaviour
@@ -53,6 +54,7 @@ public class Damageable : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         damageable = GetComponent<Damageable>();
+
     }
 
     public void Update()
@@ -69,15 +71,18 @@ public class Damageable : MonoBehaviour
        
     }
 
-    public bool Hit(int damage)
+    public void Hit(int damage)
     {
         if (IsAlive && !isInvincible)
         {
             Health -= damage;
             isInvincible = true;
-            return true;
+            animator.SetTrigger(AnimationStrings.onHit);
+            CharacterEvents.characterDamaged.Invoke(gameObject, damage);
+
         }
-        return false;
         
+
+
     }
 }

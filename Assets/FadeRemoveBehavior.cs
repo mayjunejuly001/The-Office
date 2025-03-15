@@ -19,6 +19,11 @@ public class FadeRemoveBehavior : StateMachineBehaviour
         spriteRenderer = animator.GetComponent<SpriteRenderer>();
         startColor = spriteRenderer.color;
         objToRemove = animator.gameObject;
+
+        //Vector3 scale = objToRemove.transform.localScale;
+        //scale.x = Mathf.Abs(scale.x); // Force the x-scale to be positive
+        //objToRemove.transform.localScale = scale;
+
     }
 
   

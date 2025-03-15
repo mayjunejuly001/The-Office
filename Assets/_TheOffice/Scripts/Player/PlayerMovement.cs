@@ -146,16 +146,8 @@ public class PlayerMovement : MonoBehaviour
         {
             IsMoving = false;
             _rb.linearVelocity = new Vector2(0, 0);
+            
         }
-
-       
-        
-
-           
-
-
-       
-        
 
         
     }

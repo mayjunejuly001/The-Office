@@ -3,15 +3,20 @@ using System.Diagnostics;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections))]
-public class Knight : MonoBehaviour
+public class Manager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float walkSpeed = 3f;
     public DetectionZone attackZone;
+    public DetectionZone cliffDetectionZone;
+
+    
     Rigidbody2D rb;
     TouchingDirections touchingDirections;
 
+
     Animator animator;
+    public Damageable damageable;
 
     public enum WalkableDirection {Right , Left };
 
@@ -48,6 +53,7 @@ public class Knight : MonoBehaviour
             return _hasTarget;
         } private set
         {
+            
             _hasTarget = value;
             animator.SetBool(AnimationStrings.hasTarget, value);
         } }
@@ -67,6 +73,7 @@ public class Knight : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         touchingDirections = GetComponent<TouchingDirections>();
         animator = GetComponent<Animator>();
+       
     }
 
     // Update is called once per frame
@@ -78,7 +85,7 @@ public class Knight : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (touchingDirections.IsGrounded && touchingDirections.IsOnWall)
+        if (touchingDirections.IsGrounded && touchingDirections.IsOnWall )
         {
             FlipDirection();
         }
@@ -109,6 +116,14 @@ public class Knight : MonoBehaviour
         else
         {
             Debug.LogError("current values are not right or left");
+        }
+    }
+
+    public void OnCliffDetected()
+    {
+        if (touchingDirections.IsGrounded)
+        {
+            FlipDirection();
         }
     }
 }
