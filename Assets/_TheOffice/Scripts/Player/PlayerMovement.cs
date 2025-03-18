@@ -1,9 +1,10 @@
-using Unity.Hierarchy;
-using Unity.VisualScripting;
-using UnityEditor.Rendering.LookDev;
+//using Unity.Hierarchy;
+//using Unity.VisualScripting;
+//using UnityEditor.Rendering.LookDev;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static UnityEngine.Rendering.DebugUI;
+//using UnityEngine.InputSystem;
+//using static UnityEngine.Rendering.DebugUI;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -107,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
         CountTimers();
         CheckGravity();
         OnAttack();
+        OnRangeAttack();
     }
     public bool CanMove
     {
@@ -628,6 +630,13 @@ public class PlayerMovement : MonoBehaviour
         if (InputManager.Attack)
         {
             animator.SetTrigger(AnimationStrings.attackTrigger);
+        }
+    }
+    public void OnRangeAttack()
+    {
+        if (InputManager.RangeAttack)
+        {
+            animator.SetTrigger(AnimationStrings.rangeAttackTrigger);
         }
     }
       

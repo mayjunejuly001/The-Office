@@ -448,7 +448,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 32768
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -537,6 +537,7 @@ MonoBehaviour:
   walkSpeed: 3
   attackZone: {fileID: 99762541556537084}
   cliffDetectionZone: {fileID: 0}
+  damageable: {fileID: 0}
   _hasTarget: 0
   walkStopRate: 0.1
 --- !u!114 &9204995959110393851

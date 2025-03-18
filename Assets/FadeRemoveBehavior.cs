@@ -5,7 +5,8 @@ public class FadeRemoveBehavior : StateMachineBehaviour
 {
     [SerializeField]
     public float fadetime = 0.5f;
-
+    public float fadeDelay = 0f;
+    private float fadeDelayElapse = 0f;
     private float timeElapsed = 0f;
     SpriteRenderer spriteRenderer;
     GameObject objToRemove;
@@ -29,16 +30,33 @@ public class FadeRemoveBehavior : StateMachineBehaviour
   
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        timeElapsed += Time.deltaTime;
+
+        if (fadeDelay > fadeDelayElapse)
+        {
+            fadeDelayElapse += Time.deltaTime;
+
+        }
+        else
+        {
+            
+            timeElapsed += Time.deltaTime;
+
 
         float newAlpha = startColor.a * (1 - (timeElapsed / fadetime));
 
         spriteRenderer.color = new Color(startColor.r, startColor.b, startColor.b, newAlpha);
 
+            
+
         if (timeElapsed> fadetime)
         {
             Destroy(objToRemove);
         }
+
+        }
+
+
+            
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

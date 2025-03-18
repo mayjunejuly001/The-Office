@@ -19,8 +19,8 @@ TagManager:
   - Attackable
   - GroundDetection
   - PlayerDetection
-  - 
-  - 
+  - PickupLayer
+  - InvisibleLayer
   - 
   - 
   - 
@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: InvisibleLayer
+    uniqueID: 3830813337
+    locked: 0
   - name: Foremost
     uniqueID: 1448370803
     locked: 0
