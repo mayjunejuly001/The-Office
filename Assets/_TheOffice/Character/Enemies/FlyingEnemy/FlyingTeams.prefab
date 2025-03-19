@@ -296,9 +296,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb6bc3e63954fa4f82faf26687fda18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flightSpeed: -8
+  flightSpeed: 12
   biteDetectionZone: {fileID: 5321993178078194833}
-  waypoints: []
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _hasTarget: 0
   waypointReachedDistance: 0.1
 --- !u!1 &8685911308423227075

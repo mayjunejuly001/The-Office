@@ -454,7 +454,7 @@ Animator:
   m_GameObject: {fileID: 5685162413410491990}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7d0517f594b657849ac726325d2916cb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -480,7 +480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _health: 100
-  _isAlive: 0
+  _isAlive: 1
   isInvincible: 0
   timeSinceHit: 0
   isInvincibilityTime: 0.25
@@ -497,7 +497,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -544,6 +544,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 1476903882166966323, guid: e408d275658db474ba27aceadab76925, type: 3}
   launchPoint: {fileID: 8704473491280883458}
+  projectileSpeed: 100
+  spinSpeed: 360
 --- !u!1 &7807649739910353808
 GameObject:
   m_ObjectHideFlags: 0

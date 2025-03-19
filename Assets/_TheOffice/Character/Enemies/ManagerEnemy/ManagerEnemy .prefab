@@ -441,7 +441,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -466,10 +466,10 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 32768
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -487,8 +487,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.00000023841858, y: 0.010033369}
-  m_Size: {x: 1.0580559, y: 2.4200668}
+  m_Offset: {x: 0.04958471, y: 0.021929583}
+  m_Size: {x: 0.47839612, y: 2.4438596}
   m_Direction: 0
 --- !u!114 &6217679537776843591
 MonoBehaviour:
@@ -534,12 +534,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dcd02cd51172ff42b241863db58e71c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 3
+  walkSpeed: 5
   attackZone: {fileID: 99762541556537084}
-  cliffDetectionZone: {fileID: 0}
+  cliffDetectionZone: {fileID: 4986661276036855961}
   damageable: {fileID: 0}
   _hasTarget: 0
-  walkStopRate: 0.1
+  walkStopRate: 0.05
 --- !u!114 &9204995959110393851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,7 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _health: 100
+  _health: 70
   _isAlive: 1
   isInvincible: 0
   timeSinceHit: 0

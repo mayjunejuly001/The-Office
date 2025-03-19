@@ -1,9 +1,12 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Damageable : MonoBehaviour
 {
+    public UnityEvent<int, int> healthChanged;
+
     Animator animator;
     private Damageable damageable;
     [SerializeField]
@@ -37,7 +40,10 @@ public class Damageable : MonoBehaviour
         get { return _health; }
         set
         {
+            
             _health = value; // Clamping Health
+            healthChanged?.Invoke(_health, MaxHealth);
+
             if (_health <= 0)
             {
                 IsAlive = false;

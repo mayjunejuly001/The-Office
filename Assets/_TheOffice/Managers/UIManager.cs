@@ -1,7 +1,7 @@
 
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
+
 
 
 public class UIManager : MonoBehaviour
@@ -15,6 +15,12 @@ public class UIManager : MonoBehaviour
         gameCanvas = FindAnyObjectByType<Canvas>();
         
     }
+
+    private void Update()
+    {
+        OnExitGame();
+    }
+
 
     private void OnEnable()
     {
@@ -67,23 +73,25 @@ public class UIManager : MonoBehaviour
 
         tmpText.text = healthrestored.ToString();
     }
-        
-    public void OnExitGame(InputAction.CallbackContext context)
+
+    public void OnExitGame()
     {
-        if (context.started)
+        if (InputManager.Escape == true) // Make sure the condition properly wraps the block
         {
-          #if (UNITY_EDITOR || DEVELOPMENT_BUILD)
-           Debug.Log(this.name + ": " + this.GetType() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
-        #endif
+            Debug.Log("Escape pressed");
 
-        #if (UNITY_EDITOR)
-                UnityEditor.EditorApplication.isPlaying = false;
-        #elif (UNITY_STANDALONE)
-                 Application.Quit();
-        #elif (UNITY_WEBGL)
-                SceneManager.LoadScene("QuitScene");
-        #endif
+#if (UNITY_EDITOR || DEVELOPMENT_BUILD)
+            Debug.Log(this.name + ": " + this.GetType() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+#endif
+
+#if (UNITY_EDITOR)
+            UnityEditor.EditorApplication.isPlaying = false;
+#elif (UNITY_STANDALONE)
+            Application.Quit();
+#elif (UNITY_WEBGL)
+            SceneManager.LoadScene("QuitScene");
+#endif
         }
-
     }
+
 }

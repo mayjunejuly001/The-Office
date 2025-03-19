@@ -13,12 +13,14 @@ public class InputManager : MonoBehaviour
     public static bool RunIsHeld;
     public static bool Attack;
     public static bool RangeAttack;
+    public static bool Escape;
 
     private InputAction _moveAction;
     private InputAction _jumpAction;
     private InputAction _runAction;
     private InputAction _attackAction;
     private InputAction _rangedAttack;
+    private InputAction _escape;
 
 
 
@@ -30,6 +32,7 @@ public class InputManager : MonoBehaviour
         _runAction = PlayerInput.actions["Run"];
         _attackAction = PlayerInput.actions["Attack"];
         _rangedAttack = PlayerInput.actions["RangeAttack"];
+        _escape = PlayerInput.actions["Escape"];
 
     }
 
@@ -39,6 +42,8 @@ public class InputManager : MonoBehaviour
         Movement = _moveAction.ReadValue<Vector2>();
 
         Attack = _attackAction.WasPressedThisFrame();
+
+        Escape = _escape.WasPressedThisFrame();
 
         RangeAttack = _rangedAttack.WasPressedThisFrame();
 

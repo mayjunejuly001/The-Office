@@ -109,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
         CheckGravity();
         OnAttack();
         OnRangeAttack();
+        
     }
     public bool CanMove
     {
@@ -639,5 +640,5 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger(AnimationStrings.rangeAttackTrigger);
         }
     }
-      
+   
 }

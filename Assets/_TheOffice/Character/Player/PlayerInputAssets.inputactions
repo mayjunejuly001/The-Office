@@ -1032,7 +1032,7 @@
                 {
                     "name": "",
                     "id": "0abec9d6-bdc0-498d-ac57-74c0cbb75b8c",
-                    "path": "<XInputController>/start",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
