@@ -11,6 +11,8 @@ public class Attack : MonoBehaviour
 
    
 
+    
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         Damageable damageable = collision.GetComponent<Damageable>();
@@ -20,8 +22,7 @@ public class Attack : MonoBehaviour
         if (collision != null)
         {
             damageable.Hit(attackDamage);
-
-            Debug.Log(collision.name + "hit for " + attackDamage);
+            Debug.Log(collision.name + "hit for" + attackDamage) ;
         }
     }
     

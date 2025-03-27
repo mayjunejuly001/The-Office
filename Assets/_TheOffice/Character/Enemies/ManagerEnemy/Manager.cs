@@ -96,8 +96,7 @@ public class Manager : MonoBehaviour
         }
         else if(!canMove)
         {
-            rb.linearVelocity = new Vector2(Mathf.Lerp(rb.linearVelocity.x , 0 , walkStopRate), rb.linearVelocity.y);
-            
+            rb.linearVelocity = new Vector2(Mathf.Lerp(rb.linearVelocity.x, 0, walkStopRate), rb.linearVelocity.y);
         }
 
        
